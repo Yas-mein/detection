@@ -15,8 +15,9 @@ from django.views.decorators.csrf import csrf_exempt
 def handle_request(request):
     if request.method == 'POST':
         default_camera = int(request.POST.get('defaultCameraIndex').strip("'"))
-        print(default_camera)
+
         return default_camera
+    
     
     elif request.method == 'GET':
         default_camera = 0
@@ -98,6 +99,7 @@ def face_recognition_api(request):
     return StreamingHttpResponse(generate_frames(request), content_type='text/event-stream')
 
 
+
 @csrf_exempt
 def capture_and_save_image(request: HttpRequest) -> JsonResponse:
     # Get the camera device ID from the request data
@@ -139,4 +141,4 @@ def capture_and_save_image(request: HttpRequest) -> JsonResponse:
     # Return the response with the filename and image
     response_data = {'status': 'success', 'filename': filename, 'image': image_data}
     return JsonResponse(response_data)
-         
+

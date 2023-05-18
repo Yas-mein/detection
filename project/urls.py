@@ -28,6 +28,6 @@ urlpatterns = [
     path('api/recognation/cs/',vfr.capture_and_save_image ),
     
     path('api/detection/', include('detectobject.urls')), 
-    # path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
 
 ]
